@@ -4,9 +4,9 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll([
-                '/Portfolio_Information/',
-                '/Portfolio_Information/index.html',
-                '/Portfolio_Information/style.css'
+                '/startupwithvikash/',
+                '/startupwithvikash/index.html',
+                '/startupwithvikash/css/style.css'
             ]).catch(err => console.warn('PWA Cache error:', err));
         })
     );

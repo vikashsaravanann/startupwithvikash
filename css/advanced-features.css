@@ -29,24 +29,6 @@
 }
 .print-header { display: none; text-align: center; margin-bottom: 2rem; border-bottom: 2px solid #000; padding-bottom: 1rem; }
 
-/* F33: Loading Screen */
-#adv-loading-screen {
-    position: fixed; inset: 0; background: #0f172a; z-index: 999999;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-.adv-logo-text {
-    font-size: 5rem; font-weight: bold; background: linear-gradient(135deg, #0ea5e9, #7c3aed);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    animation: adv-pulse 2s infinite alternate; margin-bottom: 20px;
-}
-.adv-typing-text { font-size: 1.5rem; color: #fff; font-family: monospace; min-height: 30px; border-right: 2px solid #0ea5e9; animation: adv-blink 1s step-end infinite; margin-bottom: 20px; }
-.adv-progress-container { width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
-.adv-progress-bar { width: 0%; height: 100%; background: #0ea5e9; transition: width 2.5s ease-in-out; }
-
-@keyframes adv-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-@keyframes adv-blink { 50% { border-color: transparent; } }
-
 
 
 

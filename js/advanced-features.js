@@ -12,48 +12,6 @@ const safeRun = (name, fn) => {
 document.addEventListener('DOMContentLoaded', () => {
     
     // ==========================================
-    // F33: Loading Screen
-    // ==========================================
-    safeRun('LoadingScreen', () => {
-        if (!sessionStorage.getItem('portfolio_loaded')) {
-            const lsHTML = `
-                <div id="adv-loading-screen">
-                    <div class="adv-logo-text">VS</div>
-                    <div class="adv-typing-text" id="adv-typing"></div>
-                    <div class="adv-progress-container">
-                        <div class="adv-progress-bar" id="adv-bar"></div>
-                    </div>
-                </div>
-            `;
-            document.body.insertAdjacentHTML('afterbegin', lsHTML);
-            
-            const typing = document.getElementById('adv-typing');
-            const bar = document.getElementById('adv-bar');
-            const screen = document.getElementById('adv-loading-screen');
-            
-            const text = "Vikash Saravanan...";
-            let i = 0;
-            const typeWriter = () => {
-                if (i < text.length) {
-                    typing.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                }
-            };
-            
-            setTimeout(() => { bar.style.width = '100%'; }, 100);
-            typeWriter();
-            
-            setTimeout(() => {
-                screen.style.opacity = '0';
-                setTimeout(() => screen.remove(), 500);
-                sessionStorage.setItem('portfolio_loaded', 'true');
-            }, 2500);
-        }
-    });
-
-
-
 
     // ==========================================
     // F16: Resume Download Counter
