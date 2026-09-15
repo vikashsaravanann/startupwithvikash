@@ -21,7 +21,6 @@
 </head>
 
 <body>
-    <canvas id="global-particles" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1;"></canvas>
     <div id="app-frame" class="page-border-light">
 
         <!-- Navigation -->
@@ -262,19 +261,6 @@
 
                     <!-- CTA Buttons -->
                     <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-                        <a href="index.html#contact" style="
-                            display: inline-flex; align-items: center; gap: 8px;
-                            padding: 13px 28px;
-                            background: linear-gradient(135deg, #0ea5e9, #6366f1);
-                            color: #fff; border-radius: 12px;
-                            font-family: 'Inter', sans-serif;
-                            font-weight: 700; font-size: 0.92rem;
-                            text-decoration: none;
-                            box-shadow: 0 6px 24px rgba(14,165,233,0.3);
-                            transition: transform 0.2s, box-shadow 0.2s;
-                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 30px rgba(14,165,233,0.4)';" onmouseout="this.style.transform=''; this.style.boxShadow='0 6px 24px rgba(14,165,233,0.3)';">
-                            <i class="fas fa-envelope"></i> Get In Touch
-                        </a>
                         <a href="index.html" style="
                             display: inline-flex; align-items: center; gap: 8px;
                             padding: 13px 28px;
@@ -354,7 +340,6 @@
             if (yearEl) yearEl.textContent = new Date().getFullYear();
         });
     </script>
-    <script src="js/particles.js"></script>
 </body>
 
 </html>
