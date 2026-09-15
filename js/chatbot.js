@@ -475,73 +475,13 @@ AVAILABILITY:
     if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('phone')) {
       container.className = 'chat-rich-card';
       container.innerHTML = `
-        <h4 style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.25rem;">📩 Quick Contact</h4>
+        <h4 style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.25rem;">📩 Contact Vikash</h4>
         <p style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); line-height: 1.5; margin-bottom: 16px;">
-          Hi, I am Vikash! If you have an opportunity or want to collaborate, fill out this form to contact me directly via WhatsApp, SMS, and Email.
+          The best way to reach Vikash is through LinkedIn or directly via Email.
         </p>
-        <form class="chat-contact-form">
-          <input type="text" class="chat-form-input chat-form-name" placeholder="Full Name" required>
-          <input type="email" class="chat-form-input chat-form-email" placeholder="Email Address" required>
-          <input type="text" class="chat-form-input chat-form-subject" placeholder="Subject (e.g. Internship)" required>
-          <textarea class="chat-form-textarea chat-form-msg" placeholder="Describe your inquiry..." required></textarea>
-          <button type="submit" class="chat-form-submit"><i class="fas fa-paper-plane" style="margin-right:6px;"></i>Send Message</button>
-        </form>
+        <a href="https://www.linkedin.com/in/vikash-saravanan-j7528/" target="_blank" class="chat-rich-btn" style="margin-bottom: 8px;"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
+        <a href="mailto:vikash07052008@gmail.com" class="chat-rich-btn"><i class="fas fa-envelope"></i> Send an Email</a>
       `;
-
-      // Bind the form action logic
-      const form = container.querySelector('.chat-contact-form');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = form.querySelector('.chat-form-submit');
-        const name = form.querySelector('.chat-form-name').value;
-        const email = form.querySelector('.chat-form-email').value;
-        const subject = form.querySelector('.chat-form-subject').value;
-        const msg = form.querySelector('.chat-form-msg').value;
-
-        submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-
-        const messageBody = `Hi Vikash,\n\nNew inquiry via AI Chatbot.\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${msg}`;
-
-        try {
-            let url = '/api/contact';
-            if (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                url = 'http://localhost:3000/api/contact';
-            } else if (window.location.hostname.includes('github.io') || 
-                       (window.location.hostname && window.location.hostname !== new URL(PRODUCTION_API_URL).hostname)) {
-                url = PRODUCTION_API_URL + '/api/contact';
-            }
-
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, subject, message: messageBody })
-            });
-
-            const data = await response.json();
-
-            if (response.ok && data.success) {
-                form.reset();
-                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Sent!';
-                addMessage("Your message has been successfully delivered to Vikash! 🚀✅", 'bot', false);
-            } else {
-                throw new Error(data.error || 'Failed to send message');
-            }
-        } catch (err) {
-            console.warn('API delivery failed:', err);
-            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed';
-            addMessage("Delivery failed. I've opened your mail app to complete the email manually. 📧", 'bot', false);
-            setTimeout(() => {
-                window.location.href = `mailto:vikash07052008@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(messageBody)}`;
-            }, 800);
-        }
-
-        setTimeout(() => {
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:6px;"></i>Send Message';
-            submitBtn.disabled = false;
-        }, 4000);
-      });
-
       return container;
     }
     return null;
